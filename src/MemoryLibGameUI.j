@@ -16,10 +16,10 @@ library MemoryLibGameUI requires MemoryLibBase, MemoryLibPrimitiveType
         public method operator currentMode takes nothing returns Ptr
             return PtrPtr[this + 0x1B4]
         endmethod
-        public method operator TargetMode takes nothing returns Ptr
+        public method operator targetMode takes nothing returns Ptr
             return PtrPtr[this + 0x210]
         endmethod
-        public method operator SelectMode takes nothing returns Ptr
+        public method operator selectMode takes nothing returns Ptr
             return PtrPtr[this + 0x214]
         endmethod
         public method operator dragSelectMode takes nothing returns Ptr
