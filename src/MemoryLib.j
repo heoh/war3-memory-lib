@@ -2,6 +2,7 @@
 
 library MemoryLib requires /*
     */ MemoryLibBase, /*
+    */ MemoryLibPrimitiveType, /*
     */ MemoryLibEnd
 endlibrary
 
