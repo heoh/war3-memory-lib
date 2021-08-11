@@ -3,6 +3,7 @@
 library MemoryLib requires /*
     */ MemoryLibBase, /*
     */ MemoryLibGameUI, /*
+    */ MemoryLibMemoryBlock, /*
     */ MemoryLibPrimitiveType, /*
     */ MemoryLibEnd
 endlibrary
