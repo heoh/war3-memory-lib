@@ -37,6 +37,17 @@ library MemoryLibGameUI requires MemoryLibBase, MemoryLibPrimitiveType
         public method operator escMenu takes nothing returns Ptr
             return PtrPtr[this + 0x228]
         endmethod
+
+        public method handleEvent takes Ptr pEvent returns integer
+            local Ptr pFunc = pGameDll + 0x3A3190
+            call SaveStr(JNProc_ht, JNProc_key, 0, "(II)I")
+            call SaveInteger(JNProc_ht, JNProc_key, 1, this)
+            call SaveInteger(JNProc_ht, JNProc_key, 2, pEvent)
+            if (JNProcCall(JNProc__thiscall, pFunc, JNProc_ht)) then
+                return LoadInteger(JNProc_ht, JNProc_key, 0)
+            endif
+            return 0
+        endmethod
     endstruct
 
 endlibrary
