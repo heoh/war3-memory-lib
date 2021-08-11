@@ -2,9 +2,9 @@
 
 library MemoryLib requires /*
     */ MemoryLibBase, /*
-    */ MemoryLibGameUI, /*
-    */ MemoryLibMemoryBlock, /*
-    */ MemoryLibPrimitiveType, /*
+    */ optional MemoryLibGameUI, /*
+    */ optional MemoryLibMemoryBlock, /*
+    */ optional MemoryLibPrimitiveType, /*
     */ MemoryLibEnd
 endlibrary
 
