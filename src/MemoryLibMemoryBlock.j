@@ -5,7 +5,7 @@
 library MemoryLibMemoryBlock requires MemoryLibBase, MemoryLibPrimitiveType
 
     globals
-        /*  */
+        /* 최대 할당 크기 */
         constant integer MemoryLib_MAX_MEMORY_BLOCK_SIZE = JASS_MAX_ARRAY_SIZE * 4
     endglobals
 
