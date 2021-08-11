@@ -15,6 +15,7 @@ echo "Writing header..."
 echo "\
 /*
  * MemoryLib
+ * commit: $(git rev-parse --short HEAD)
  */\
 " >> "$OUTPUT_FILE"
 
