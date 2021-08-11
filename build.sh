@@ -7,9 +7,8 @@ OUTPUT_FILE="$OUTPUT_DIR/MemoryLib.j"
 echo "Output File: $OUTPUT_FILE"
 echo ""
 
-echo "Creating file..."
+echo "Creating directory..."
 mkdir -p "$OUTPUT_DIR"
-echo "" > "$OUTPUT_FILE"
 
 echo "Writing header..."
 echo "\
@@ -17,7 +16,7 @@ echo "\
  * MemoryLib
  * commit: $(git rev-parse --short HEAD)
  */\
-" >> "$OUTPUT_FILE"
+" > "$OUTPUT_FILE"
 
 echo "Writing body..."
 for filename in $SCRIPT_DIR/*.j; do
