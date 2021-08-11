@@ -2,9 +2,10 @@
  * MemoryLibMemoryBlock
  * 빈 메모리 공간을 할당합니다.
  */
-library MemoryLibMemoryBlock requires MemoryLibBase
+library MemoryLibMemoryBlock requires MemoryLibBase, MemoryLibPrimitiveType
 
     globals
+        /*  */
         constant integer MemoryLib_MAX_MEMORY_BLOCK_SIZE = JASS_MAX_ARRAY_SIZE * 4
     endglobals
 
