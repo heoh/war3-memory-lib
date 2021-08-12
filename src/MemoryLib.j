@@ -2,6 +2,8 @@
 
 library MemoryLib requires /*
     */ MemoryLibBase, /*
+    */ optional MemoryLibCommandButton, /*
+    */ optional MemoryLibCommandButtonData, /*
     */ optional MemoryLibGameUI, /*
     */ optional MemoryLibMemoryBlock, /*
     */ optional MemoryLibPrimitiveType, /*
