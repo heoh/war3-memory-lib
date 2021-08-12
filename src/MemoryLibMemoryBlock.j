@@ -10,40 +10,42 @@ library MemoryLibMemoryBlock requires MemoryLibBase, MemoryLibPrimitiveType
     endglobals
 
     /*
-     * //! runtextmacro MemoryLib_DefineGlobalMemoryBlock("name", "size")
+     * //! runtextmacro MemoryLib_DefineGlobalMemoryBlock("accessor", "name", "id", "size")
      * `size`바이트 크기의 전역 메모리 블록을 `name`이라는 이름으로 생성합니다.
-     * 메모리 블록은 전역으로 생성되며, 아래 변수로 참조할 수 있습니다:
-     * ${name}_pHead: 메모리 블록 포인터
-     * ${name}_size : 메모리 블록 크기 (바이트)
+     * `accessor`는 접근자이며, {"", "public", "private"} 중 하나만 사용 가능합니다.
+     * `id` 값은 유일해야하며, 다른 블록과 겹치면 안됩니다.
+     *
+     * 메모리 블록은 전역으로 생성되며, 다음과 같은 형태로 참조할 수 있습니다:
+     * $name.pHead: 메모리 블록 포인터
+     * $name.size : 메모리 블록 크기 (바이트)
      */
-    //! textmacro MemoryLib_DefineMemoryBlock takes NAME, SIZE
-    scope $NAME$
-        globals
-            integer $NAME$_block  // Not used, it's here just to fool Jasshelper
-            integer array l__$NAME$_block
-            public Ptr pHead
-            public integer size
-        endglobals
+    //! textmacro MemoryLib_DefineMemoryBlock takes ACCESSOR, NAME, ID, SIZE
 
-        private struct InitArray
-            private static method onInit takes nothing returns nothing
-                local integer lastIndex = ($SIZE$ - 1) / 4
-                set l__$NAME$_block[lastIndex] = 0
-            endmethod
-        endstruct
+    globals
+        integer $ID$_block
+        integer array l__$ID$_block
+    endglobals
 
-        private function Typecast takes nothing returns nothing
-            local integer $NAME$_block
-        endfunction
+    $ACCESSOR$ struct $NAME$ extends array
+        readonly static Ptr pHead
+        readonly static integer size
 
-        private struct Init
-            //# +nosemanticerror
-            private static method onInit takes nothing returns nothing
-                set pHead = PtrPtr(l__$NAME$_block)[3]
-                set size = $SIZE$
-            endmethod
-        endstruct
-    endscope
+        private static method initSize takes nothing returns nothing
+            local integer lastIndex = ($SIZE$ - 1) / 4
+            set l__$ID$_block[lastIndex] = 0
+        endmethod
+
+        private static method typecast takes nothing returns nothing
+            local integer $ID$_block
+        endmethod
+
+        //# +nosemanticerror
+        private static method onInit takes nothing returns nothing
+            call thistype.initSize()
+            set thistype.pHead = PtrPtr(l__$ID$_block)[3]
+            set thistype.size = $SIZE$
+        endmethod
+    endstruct
     //! endtextmacro
 
 endlibrary
