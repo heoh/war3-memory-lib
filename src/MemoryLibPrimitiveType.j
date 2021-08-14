@@ -5,6 +5,10 @@ library MemoryLibPrimitiveType requires MemoryLibBase
             return JNMemoryGetByte(address)
         endmethod
 
+        public static method operator []= takes integer address, integer value returns nothing
+            call JNMemorySetByte(address, value)
+        endmethod
+
         public method operator value takes nothing returns integer
             return JNMemoryGetByte(this)
         endmethod
@@ -25,6 +29,10 @@ library MemoryLibPrimitiveType requires MemoryLibBase
     struct IntPtr extends Ptr
         public static method operator [] takes integer address returns integer
             return JNMemoryGetInteger(address)
+        endmethod
+
+        public static method operator []= takes integer address, integer value returns nothing
+            call JNMemorySetInteger(address, value)
         endmethod
 
         public method operator value takes nothing returns integer
@@ -49,6 +57,10 @@ library MemoryLibPrimitiveType requires MemoryLibBase
             return JNMemoryGetReal(address)
         endmethod
 
+        public static method operator []= takes integer address, real value returns nothing
+            call JNMemorySetReal(address, value)
+        endmethod
+
         public method operator value takes nothing returns real
             return JNMemoryGetReal(this)
         endmethod
@@ -69,6 +81,10 @@ library MemoryLibPrimitiveType requires MemoryLibBase
     struct PtrPtr extends Ptr
         public static method operator [] takes integer address returns Ptr
             return JNMemoryGetInteger(address)
+        endmethod
+
+        public static method operator []= takes integer address, integer value returns nothing
+            call JNMemorySetInteger(address, value)
         endmethod
 
         public method operator value takes nothing returns Ptr
