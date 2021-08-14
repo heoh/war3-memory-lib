@@ -1,4 +1,6 @@
-library MemoryLibCommandButton requires MemoryLibBase, MemoryLibPrimitiveType, MemoryLibCommandButtonData
+//! import "DzAPIFrameHandle.j"
+
+library MemoryLibCommandButton requires MemoryLibBase, MemoryLibPrimitiveType, MemoryLibCommandButtonData, DzAPIFrameHandle
 
     struct CommandButton extends Ptr
         public static method getCommandBarButton takes integer x, integer y returns thistype
